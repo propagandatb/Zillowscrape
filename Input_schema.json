@@ -1,0 +1,18 @@
+{
+    "title": "Zillow Listing Scraper",
+    "description": "Scrape data from a specific Zillow listing URL.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Listing URLs",
+            "type": "array",
+            "description": "One or more Zillow listing URLs to scrape.",
+            "items": {
+                "type": "string",
+                "format": "uri"
+            }
+        }
+    },
+    "required": ["startUrls"]
+}
