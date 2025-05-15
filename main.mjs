@@ -3,28 +3,31 @@ import { PuppeteerCrawler } from 'crawlee';
 
 await Actor.init();
 
-const startUrls = ['https://www.zillow.com/homes/for_sale/Stratford-CT'];
+const startUrls = ['https://www.zillow.com/homes/for_sale/Stratford-CT/'];
 
 const crawler = new PuppeteerCrawler({
-    async requestHandler({ page, request, log }) {
-        log.info(`Processing ${request.url}`);
+  async requestHandler({ page, request, log }) {
+    log.info(`Processing ${request.url}`);
 
-        await page.waitForSelector('.photo-cards');
+    // Wait for the listings to load
+    await page.waitForSelector('article.list-card');
 
-        const listings = await page.evaluate(() => {
-            return Array.from(document.querySelectorAll('.list-card-info')).map(card => ({
-                title: card.querySelector('.list-card-heading')?.innerText,
-                price: card.querySelector('.list-card-price')?.innerText,
-                link: card.querySelector('a')?.href,
-            }));
-        });
+    // Extract data
+    const listings = await page.evaluate(() => {
+      return Array.from(document.querySelectorAll('article.list-card')).map(card => ({
+        title: card.querySelector('address')?.innerText || '',
+        price: card.querySelector('.list-card-price')?.innerText || '',
+        link: card.querySelector('a')?.href || ''
+      }));
+    });
 
-        for (const listing of listings) {
-            console.log(listing);
-            await Actor.pushData(listing);
-        }
-    },
+    // Push data to dataset
+    for (const listing of listings) {
+      await Actor.pushData(listing);
+    }
+  }
 });
 
 await crawler.run(startUrls);
+
 await Actor.exit();
