@@ -1,18 +1,15 @@
-{
-    "title": "Zillow Listing Scraper",
-    "description": "Scrape data from a specific Zillow listing URL.",
-    "type": "object",
-    "schemaVersion": 1,
-    "properties": {
-        "startUrls": {
-            "title": "Listing URLs",
-            "type": "array",
-            "description": "One or more Zillow listing URLs to scrape.",
-            "items": {
-                "type": "string",
-                "format": "uri"
-            }
-        }
-    },
-    "required": ["startUrls"]
+"inputSchema": {
+  "type": "object",
+  "title": "Input",
+  "description": "Zillow Listing URL Input",
+  "properties": {
+    "listingUrl": {
+      "title": "Listing URL",
+      "type": "string",
+      "description": "Enter the Zillow listing URL you want to scrape",
+      "editor": "textfield",
+      "default": "https://www.zillow.com/homedetails/70-Ruby-Ln-Stratford-CT-06614/58752170_zpid/"
+    }
+  },
+  "required": ["listingUrl"]
 }
