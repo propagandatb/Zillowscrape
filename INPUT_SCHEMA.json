@@ -1,10 +1,12 @@
-"startUrls": {
-  "title": "Listing URLs",
-  "type": "array",
-  "description": "One or more Zillow listing URLs to scrape.",
-  "editor": "textfield",
-  "items": {
-    "type": "string",
-    "format": "uri"
+{
+  "startUrls": {
+    "title": "Listing URLs",
+    "type": "array",
+    "description": "One or more Zillow listing URLs to scrape.",
+    "editor": "textfield",
+    "items": {
+      "type": "string",
+      "format": "uri"
+    }
   }
 }
