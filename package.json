@@ -10,19 +10,5 @@
     "crawlee": "^3.0.0",
     "@crawlee/puppeteer": "^3.0.0"
   },
-  "inputSchema": {
-    "type": "object",
-    "title": "Input",
-    "description": "Zillow Listing URL Input",
-    "properties": {
-      "listingUrl": {
-        "title": "Listing URL",
-        "type": "string",
-        "description": "Enter the Zillow listing URL you want to scrape",
-        "default": "https://www.zillow.com/homedetails/70-Ruby-Ln-Stratford-CT-06614/58752170_zpid/"
-      }
-    },
-    "required": ["listingUrl"]
-  },
   "type": "module"
 }
