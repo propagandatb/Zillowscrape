@@ -1,0 +1,13 @@
+{
+  "name": "zillow-scraper",
+  "version": "0.0.1",
+  "description": "Basic Zillow Scraper using Puppeteer on Apify",
+  "scripts": {
+    "start": "node main.mjs"
+  },
+  "dependencies": {
+    "apify": "^3.0.0",
+    "crawlee": "^3.0.0"
+  },
+  "type": "module"
+}
