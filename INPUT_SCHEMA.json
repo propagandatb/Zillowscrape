@@ -1,19 +1,18 @@
 {
-  "title": "Zillow Listing Scraper",
-  "description": "Scrape data from one or more Zillow listing URLs.",
-  "type": "object",
-  "schemaVersion": 1,
-  "properties": {
-    "startUrls": {
-      "title": "Listing URLs",
-      "type": "array",
-      "description": "One or more Zillow listing URLs to scrape.",
-      "editor": "textfield",
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
-    }
-  },
-  "required": ["startUrls"]
+    "title": "Zillow Listing Scraper",
+    "description": "Scrape data from one or more Zillow listing URLs.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Listing URLs",
+            "type": "array",
+            "description": "One or more Zillow listing URLs to scrape.",
+            "items": {
+                "type": "string",
+                "format": "uri"
+            }
+        }
+    },
+    "required": ["startUrls"]
 }
