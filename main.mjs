@@ -3,11 +3,9 @@ import { PuppeteerCrawler } from 'crawlee';
 
 await Actor.init();
 
-// Pulls the provided Zillow listing URL from Apify's input panel
+// Get user-provided input from Apify's input panel
 const { listingUrl } = await Actor.getInput();
-
-// Correctly wrap the URL in an object as required by Crawlee
-const startUrls = [{ url: listingUrl }];
+const startUrls = [{ url: listingUrl }];  // Corrected format
 
 const crawler = new PuppeteerCrawler({
     async requestHandler({ page, request, log }) {
@@ -29,14 +27,14 @@ const crawler = new PuppeteerCrawler({
                 description: getText('div[data-testid="home-description"]'),
                 features: getAllTexts('ul[data-testid="home-features-list"] li'),
                 images: getAllSrcs('ul[data-testid="media-stream"] img'),
-                priceHistory: getAllTexts('section[data-testid="price-history"] table'),
-                taxHistory: getAllTexts('section[data-testid="tax-history"] table'),
-                nearbySchools: getAllTexts('section[data-testid="nearby-schools"]')
+                priceHistory: getAllTexts('section[data-testid="price-history"] table tr'),
+                taxHistory: getAllTexts('section[data-testid="tax-history"] table tr'),
+                nearbySchools: getAllTexts('section[data-testid="nearby-schools"]'),
             };
         });
 
         await Actor.pushData(data);
-    }
+    },
 });
 
 await crawler.run(startUrls);
